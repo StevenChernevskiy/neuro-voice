@@ -3,108 +3,101 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NeuroVoice — проект на Стивен Черневски за конкурса Джон Атанасов</title>
-  <meta name="description" content="NeuroVoice — прост прототип за разпознаване на „Да/Не“ чрез ЕЕГ. Проект на Стивен Черневски за конкурса Джон Атанасов." />
+  <title>NeuroVoice - проект на Стивен Черневский за конкурса Джон Атанасов</title>
+  <meta name="description" content="NeuroVoice - прост прототип за разпознаване на Да Не чрез ЕЕГ Проект на Стивен Черневский за конкурса Джон Атанасов" />
 
-  <!-- Импортиране на шрифт Inter от Google Fonts -->
+  <!-- лесен шрифт за четене -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
-    /* Глобални CSS променливи за цветове */
+    /* цветове и базови стилове прости и ясни */
     :root{
-      --bg:#0b0d12; --card:#121520; --muted:#9aa3b2; --text:#e8ecf1; --accent:#4ad1a8; --accent2:#7aa5ff;
+      --bg:#0b0d12;
+      --card:#121520;
+      --muted:#9aa3b2;
+      --text:#e8ecf1;
+      --accent:#4ad1a8;
+      --accent2:#7aa5ff;
+      --stroke:#273047;
     }
 
-    /* Нулиране на отстояния и задаване на общи стилове */
     *{box-sizing:border-box}
-    html,body{margin:0;height:100%;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:radial-gradient(1200px 600px at 70% -10%, #18203a 0%, #0b0d12 55%);}
+    html,body{
+      margin:0;
+      height:100%;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:#0b0d12;
+    }
 
-    /* Линкове */
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
 
-    /* Централна обвивка за съдържанието */
-    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    .wrap{max-width:980px;margin:0 auto;padding:20px}
 
-    /* Хедър и навигация */
-    header{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:12px 0}
-    .logo{display:flex;gap:12px;align-items:center;font-weight:800;letter-spacing:.3px}
-    .logo-badge{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:#081317;font-weight:800}
-    nav{display:flex;gap:18px;font-weight:600}
+    /* горна лента с лого и меню супер проста */
+    header{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:8px 0}
+    .logo{display:flex;gap:10px;align-items:center;font-weight:800;letter-spacing:.3px}
+    .logo-badge{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:#081317;font-weight:800}
+    nav{display:flex;gap:14px;font-weight:600}
     nav a{color:var(--text);opacity:.9}
     nav a:hover{opacity:1}
-
-    /* Превключвател за език */
-    .lang-switch{margin-left:20px;}
-    .lang-switch a{margin-left:8px;font-size:14px;opacity:.7;cursor:pointer}
+    .lang-switch{margin-left:8px}
+    .lang-switch a{margin-left:6px;font-size:14px;opacity:.7;cursor:pointer}
     .lang-switch a.active{opacity:1;font-weight:700}
 
-    /* Hero секция */
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:42px 0 18px}
-    .hero h1{font-size:44px;line-height:1.05;margin:0 0 12px}
-    .hero p{color:var(--muted);font-size:18px;margin:0 0 18px}
-    .cta{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{padding:12px 16px;border-radius:12px;border:1px solid #2a3144;background:var(--card);color:var(--text);font-weight:600}
+    .hero{display:grid;grid-template-columns:1fr;gap:16px;align-items:center;padding:22px 0}
+    .hero h1{font-size:36px;line-height:1.1;margin:0 0 8px}
+    .hero p{color:var(--muted);font-size:18px;margin:0 0 14px}
+    .cta{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{padding:10px 14px;border-radius:12px;border:1px solid var(--stroke);background:var(--card);color:var(--text);font-weight:600}
     .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#081317;border:none}
 
-    /* Картички и мрежа */
-    .card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);backdrop-filter: blur(6px);border-radius:16px;padding:18px}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    h2{font-size:26px;margin:22px 0 10px}
+    .card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px}
+
+    h2{font-size:24px;margin:18px 0 8px}
     .muted{color:var(--muted)}
-    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
 
-    /* Стъпки за работа */
-    .how{padding:24px 0}
-    .how .step{padding:16px;border-radius:14px;border:1px dashed #2a3144}
+    .grid-steps{display:grid;grid-template-columns:1fr;gap:12px}
+    .step{padding:14px;border-radius:12px;border:1px dashed var(--stroke)}
 
-    /* Видео контейнер */
-    .video{aspect-ratio:16/9;border-radius:16px;border:1px solid #2a3144;display:grid;place-items:center;color:var(--muted)}
-
-    /* Екип секция */
-    .team{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .member{padding:14px;border:1px solid #2a3144;border-radius:14px}
-    .member b{display:block}
-
-    /* Футър */
-    footer{padding:28px 0;color:var(--muted);font-size:14px}
-
-    /* Адаптивност за мобилни устройства */
-    @media (max-width:860px){
-      .hero{grid-template-columns:1fr}
-      .grid-3, .team{grid-template-columns:1fr}
+    @media (min-width:760px){
+      .grid-steps{grid-template-columns:repeat(2,1fr)}
     }
 
-    /* Скриване на английски текст по подразбиране */
+    .video{aspect-ratio:16/9;border-radius:12px;border:1px solid var(--stroke);display:grid;place-items:center;color:var(--muted);background:#0f1320}
+
+    .team{display:grid;grid-template-columns:1fr;gap:12px}
+    @media (min-width:760px){.team{grid-template-columns:repeat(2,1fr)}}
+    .member{padding:12px;border:1px solid var(--stroke);border-radius:12px}
+    .member b{display:block}
+
+    footer{padding:22px 0;color:var(--muted);font-size:14px}
+
     [lang="en"]{display:none}
-    /* Ако body има клас .en, показваме английското съдържание */
     body.en [lang="en"]{display:block}
     body.en [lang="bg"]{display:none}
   </style>
 
   <script>
-    // Скрипт за превключване на езика (BG/EN)
     document.addEventListener('DOMContentLoaded', () => {
-      const switchLinks = document.querySelectorAll('.lang-switch a');
+      const switchLinks = document.querySelectorAll('.lang-switch a')
       switchLinks.forEach(link => {
         link.addEventListener('click', e => {
-          e.preventDefault();
-          const lang = link.textContent.trim();
-          // Ако е избрано EN, добавяме клас .en на body, иначе го махаме
-          document.body.classList.toggle('en', lang==='EN');
-          // Обновяваме визуално активния език
-          switchLinks.forEach(l=>l.classList.remove('active'));
-          link.classList.add('active');
-        });
-      });
-    });
+          e.preventDefault()
+          const lang = link.textContent.trim()
+          document.body.classList.toggle('en', lang==='EN')
+          switchLinks.forEach(l=>l.classList.remove('active'))
+          link.classList.add('active')
+        })
+      })
+    })
   </script>
 </head>
 <body>
   <div class="wrap">
-    <!-- Хедър с лого и навигация -->
     <header>
       <div class="logo">
         <div class="logo-badge">NV</div>
@@ -116,84 +109,91 @@
         <a href="#demo"><span lang="bg">Демо</span><span lang="en">Demo</span></a>
         <a href="#team"><span lang="bg">Екип</span><span lang="en">Team</span></a>
         <a href="#contact"><span lang="bg">Контакти</span><span lang="en">Contacts</span></a>
-        <div class="lang-switch">
-          <!-- Бутони за смяна на език -->
+        <div class="lang-switch" aria-label="Language switch">
           <a href="#" class="active">BG</a>
           <a href="#">EN</a>
         </div>
       </nav>
     </header>
 
-    <!-- Hero секция с основно послание и CTA -->
     <section class="hero card">
       <div>
-        <h1><span lang="bg">Глас чрез мозъчни вълни: „Да“ или „Не“ с един поглед</span><span lang="en">Voice through brain waves: “Yes” or “No” at a glance</span></h1>
-        <p><span lang="bg">Прототип, който разпознава отговори по ЕЕГ и показва резултат: „Да“, „Не“ или „Повторете измерването“, ако сигналът е несигурен.</span><span lang="en">A prototype that recognizes answers from EEG and shows result: “Yes”, “No” or “Repeat measurement” if the signal is uncertain.</span></p>
+        <h1><span lang="bg">Глас чрез мозъчни вълни - Да или Не с един поглед</span><span lang="en">Voice through brain waves - Yes or No at a glance</span></h1>
+        <p><span lang="bg">Прототип разпознава отговори по ЕЕГ и показва резултат Да или Не</span><span lang="en">A prototype recognizes answers from EEG and shows a result Yes or No</span></p>
+        <p><span lang="bg">Ако сигналът е несигурен - повторете измерването</span><span lang="en">If the signal is uncertain - repeat the measurement</span></p>
         <div class="cta">
           <a class="btn primary" href="#demo"><span lang="bg">Вижте демо</span><span lang="en">See demo</span></a>
-          <a class="btn" href="https://neurovoice.dev" target="_blank" rel="noreferrer">neurovoice.dev</a>
+          <a class="btn" href="https://neurovoice.dev" target="_blank" rel="noreferrer">neurovoice dev</a>
         </div>
       </div>
       <div class="card">
-        <div class="video"><span lang="bg">Видео демонстрация (MP4/WebM/YouTube)</span><span lang="en">Video demo (MP4/WebM/YouTube)</span></div>
+        <div class="video"><span lang="bg">Видео демонстрация</span><span lang="en">Video demo</span></div>
       </div>
     </section>
 
-    <!-- Секция "За проекта" -->
     <section id="about" class="card">
       <h2><span lang="bg">За проекта</span><span lang="en">About</span></h2>
-      <p class="muted"><span lang="bg">NeuroVoice е учебно-изследователски проект за конкурса „Джон Атанасов“. Цел: бърз, ясен интерфейс за хора с нарушения в говора или моториката.</span><span lang="en">NeuroVoice is an educational-research project for the John Atanasoff contest. Goal: a fast, clear interface for people with speech or motor impairments.</span></p>
+      <p class="muted"><span lang="bg">NeuroVoice е учебно изследователски проект за конкурса Джон Атанасов</span><span lang="en">NeuroVoice is an educational research project for the John Atanasoff contest</span></p>
+      <p class="muted"><span lang="bg">Цел - бърз и ясен интерфейс за хора с нарушения в говора или моториката</span><span lang="en">Goal - a fast and clear interface for people with speech or motor impairments</span></p>
     </section>
 
-    <!-- Секция "Как работи" със стъпки -->
-    <section id="how" class="how">
+    <section id="how" class="card">
       <h2><span lang="bg">Как работи</span><span lang="en">How it works</span></h2>
-      <div class="grid-3">
+      <div class="grid-steps">
         <div class="step">
-          <b><span lang="bg">1. Събиране на сигнал</span><span lang="en">1. Signal acquisition</span></b>
-          <p class="muted"><span lang="bg">Muse SDK, поток от ЕЕГ, филтриране на артефакти.</span><span lang="en">Muse SDK, EEG stream, artifact filtering.</span></p>
+          <b><span lang="bg">1 Събиране на сигнал</span><span lang="en">1 Signal acquisition</span></b>
+          <p class="muted"><span lang="bg">Muse SDK поток от ЕЕГ филтриране на артефакти</span><span lang="en">Muse SDK EEG stream artifact filtering</span></p>
         </div>
         <div class="step">
-          <b><span lang="bg">2. Класификация</span><span lang="en">2. Classification</span></b>
-          <p class="muted"><span lang="bg">Прагова система: „Да“ или „Не“. При неясни стойности — повторно измерване.</span><span lang="en">Threshold method: “Yes” or “No”. If ambiguous values — repeat measurement.</span></p>
+          <b><span lang="bg">2 Класификация</span><span lang="en">2 Classification</span></b>
+          <p class="muted"><span lang="bg">Прагова система Да или Не при неясни стойности - повторно измерване</span><span lang="en">Threshold method Yes or No if values are ambiguous - repeat measurement</span></p>
         </div>
         <div class="step">
-          <b><span lang="bg">3. Визуален отговор</span><span lang="en">3. Visual response</span></b>
-          <p class="muted"><span lang="bg">Ясен индикатор и скала на увереност. Интерфейс на C++/Qt.</span><span lang="en">Clear indicator and confidence scale. Interface in C++/Qt.</span></p>
+          <b><span lang="bg">3 Визуален отговор</span><span lang="en">3 Visual response</span></b>
+          <p class="muted"><span lang="bg">Ясен индикатор и скала на увереност интерфейс на C++ Qt</span><span lang="en">Clear indicator and confidence scale interface in C++ Qt</span></p>
         </div>
       </div>
     </section>
 
-    <!-- Секция с видео демонстрация -->
     <section id="demo" class="card">
       <h2><span lang="bg">Демонстрация</span><span lang="en">Demo</span></h2>
       <video class="video" controls poster="poster.jpg">
         <source src="demo.mp4" type="video/mp4" />
-        <span lang="bg">Браузърът ви не поддържа видео. Изтеглете файла</span><span lang="en">Your browser does not support video. Download the file</span> <a href="demo.mp4">demo.mp4</a>.
+        <span lang="bg">Браузърът ви не поддържа видео изтеглете файла</span>
+        <span lang="en">Your browser does not support video download the file</span>
+        <a href="demo.mp4">demo mp4</a>
       </video>
     </section>
 
-    <!-- Секция "Екип" -->
     <section id="team" class="card">
       <h2><span lang="bg">Екип</span><span lang="en">Team</span></h2>
       <div class="team">
-        <div class="member"><b>Стивен Черневски</b><span class="muted"><span lang="bg">Идея, прототип, представяне</span><span lang="en">Idea, prototype, presentation</span></span></div>
-        <div class="member"><b>Никита</b><span class="muted"><span lang="bg">Разработка, сайт</span><span lang="en">Development, website</span></span></div>
-        <div class="member"><b>Катя</b><span class="muted"><span lang="bg">Материали, визуализация</span><span lang="en">Materials, visuals</span></span></div>
-        <div class="member"><b>Артем</b><span class="muted"><span lang="bg">Консултации</span><span lang="en">Consulting</span></span></div>
+        <div class="member">
+          <b><span lang="bg">Стивен Черневский</span><span lang="en">Steven Chernevskiy</span></b>
+          <span class="muted"><span lang="bg">Прототип, разработка, сайт, представяне</span><span lang="en">Prototype, development, website, presentation</span></span>
+        </div>
+        <div class="member">
+          <b><span lang="bg">Никита</span><span lang="en">Nikita</span></b>
+          <span class="muted"><span lang="bg">Ментор</span><span lang="en">Mentor</span></span>
+        </div>
       </div>
     </section>
 
-    <!-- Секция "Контакти" -->
     <section id="contact" class="card">
       <h2><span lang="bg">Контакти</span><span lang="en">Contacts</span></h2>
-      <p class="muted"><span lang="bg">Сайт:</span><span lang="en">Website:</span> <a href="https://neurovoice.dev" target="_blank" rel="noreferrer">neurovoice.dev</a><br>
-      <span lang="bg">Имейл:</span><span lang="en">Email:</span> <a href="mailto:hello@neurovoice.dev">hello@neurovoice.dev</a></p>
+      <p class="muted"><span lang="bg">Сайт</span><span lang="en">Website</span>
+        <a href="https://neurovoice.dev" target="_blank" rel="noreferrer">neurovoice dev</a>
+      </p>
+      <p class="muted"><span lang="bg">Имейл</span><span lang="en">Email</span>
+        <a href="mailto:hello@neurovoice.dev">hello@neurovoice dev</a>
+      </p>
     </section>
 
-    <!-- Футър -->
     <footer>
-      <div><span lang="bg">© 2025 NeuroVoice. Проект на Стивен Черневски за конкурса „Джон Атанасов“ (България).</span><span lang="en">© 2025 NeuroVoice. Project by Stiven Chernevski for the John Atanasoff Contest (Bulgaria).</span></div>
+      <div>
+        <span lang="bg">© 2025 NeuroVoice проект на Стивен Черневский за конкурса Джон Атанасов България</span>
+        <span lang="en">© 2025 NeuroVoice project by Steven Chernevskiy for the John Atanasoff Contest Bulgaria</span>
+      </div>
     </footer>
   </div>
 </body>
