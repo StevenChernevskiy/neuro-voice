@@ -24,59 +24,190 @@
     }
 
     *{box-sizing:border-box}
-    html,body{margin:0;height:100%;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:var(--bg)}
+    html,body{
+      margin:0;
+      height:100%;
+      font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:var(--bg)
+    }
 
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
+    a{
+      color:var(--accent);
+      text-decoration:none
+    }
+    a:hover{
+      text-decoration:underline
+    }
 
     /* Подредба на страницата */
-    .wrap{max-width:980px;margin:0 auto;padding:20px}
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:20px
+    }
 
     /* Горна лента */
-    header{display:flex;gap:20px;align-items:center;justify-content:space-between;padding:10px 0}
-    .logo{display:flex;gap:10px;align-items:center;font-weight:800;letter-spacing:0}
-    .logo-badge{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:var(--bg);font-weight:800}
-    nav{display:flex;gap:15px;font-weight:600;align-items:center}
-    nav a{color:var(--text);opacity:.9}
-    nav a:hover{opacity:1}
+    header{
+      display:flex;
+      gap:20px;
+      align-items:center;
+      justify-content:space-between;
+      padding:10px
+    }
+    .logo{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      font-weight:800;
+      letter-spacing:0
+    }
+    .logo-badge{
+      width:40px;
+      height:40px;
+      border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      display:grid;
+      place-items:center;
+      color:var(--bg);
+      font-weight:800
+    }
+    nav{
+      display:flex;
+      gap:15px;
+      font-weight:600;
+      align-items:center
+    }
+    nav a{
+      color:var(--text);
+      opacity:.9
+    }
+    nav a:hover{
+      opacity:1
+    }
 
-    .lang-switch{display:flex;gap:10px;margin-left:10px}
-    .lang-btn{font-size:15px;opacity:.7;cursor:pointer;padding:5px 10px;border-radius:10px;border:1px solid var(--stroke);background:var(--card)}
-    .lang-btn.active{opacity:1;font-weight:700}
+    .lang-switch{
+      display:flex;
+      gap:10px;
+      margin-left:10px
+    }
+    .lang-btn{
+      font-size:15px;
+      opacity:0.7;
+      cursor:pointer;
+      padding:5px 10px;
+      border-radius:10px;
+      border:1px solid var(--stroke);
+      background:var(--card)
+    }
+    .lang-btn.active{
+      opacity:1;
+      font-weight:700
+    }
 
     /* Начален блок */
-    .hero{display:grid;grid-template-columns:1fr;gap:20px;align-items:center;padding:20px 0}
-    .hero h1{font-size:35px;line-height:1.2;margin:0 0 10px}
-    .hero p{color:var(--muted);font-size:20px;margin:0 0 15px}
+    .hero{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:20px;
+      align-items:center;
+      padding:20px 0
+    }
+    .hero h1{
+      font-size:35px;
+      line-height:1.2;
+      margin:0 0 10px
+    }
+    .hero p{
+      color:var(--muted);
+      font-size:20px;
+      margin:0 0 15px
+    }
 
-    .cta{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{padding:10px 15px;border-radius:10px;border:1px solid var(--stroke);background:var(--card);color:var(--text);font-weight:600}
+    .cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap
+    }
+    .btn{
+      padding:10px 15px;
+      border-radius:10px;
+      border:1px solid var(--stroke);
+      background:var(--card);
+      color:var(--text);
+      font-weight:600
+    }
     /* Карти */
-    .card{background:var(--card);border:1px solid var(--stroke);border-radius:15px;padding:15px;margin-bottom:10px}
+    .card{
+      background:var(--card);
+      border:1px solid var(--stroke);
+      border-radius:15px;
+      padding:15px;
+      margin-bottom:10px
+    }
 
     /* Заглавия и помощен текст */
-    h2{font-size:25px;margin:20px 0 10px}
-    .muted{color:var(--muted)}
+    h2{
+      font-size:25px;
+      margin:20px 0 10px
+    }
+    .muted{
+      color:var(--muted)
+    }
 
     /* Стъпки */
-    .grid-steps{display:grid;grid-template-columns:1fr;gap:15px}
-    .step{padding:15px;border-radius:10px;border:1px dashed var(--stroke)}
+    .grid-steps{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:15px
+    }
+    .step{
+      padding:15px;
+      border-radius:10px;
+      border:1px dashed var(--stroke)
+    }
 
     @media (min-width:760px){
-      .grid-steps{grid-template-columns:repeat(2,1fr)}
+      .grid-steps{
+        grid-template-columns:repeat(2,1fr)
+      }
     }
 
     /* Видео контейнер */
-    .video{width:100%;aspect-ratio:16/9;border-radius:10px;border:1px solid var(--stroke);background:var(--card)}
+    .video{
+      width:100%;
+      aspect-ratio:16/9;
+      border-radius:10px;
+      border:1px solid var(--stroke);
+      background:var(--card)
+    }
 
     /* Екип */
-    .team{display:grid;grid-template-columns:1fr;gap:15px}
-    @media (min-width:760px){.team{grid-template-columns:repeat(2,1fr)}}
-    .member{padding:15px;border:1px solid var(--stroke);border-radius:10px}
-    .member b{display:block}
+    .team{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:15px
+    }
+    @media (min-width:760px){
+      .team{
+        grid-template-columns:repeat(2,1fr)
+      }
+    }
+    .member{
+      padding:15px;
+      border:1px solid var(--stroke);
+      border-radius:10px
+    }
+    .member b{
+      display:block
+    }
 
     /* Долен колонтитул */
-    footer{padding:20px 0;color:var(--muted);font-size:15px}
+    footer{
+      padding:20px 0;
+      color:var(--muted);
+      font-size:15px
+    }
 
     /* Видимост на езиците */
     [lang="en"]{display:none}
@@ -85,13 +216,12 @@
   </style>
 
   <script>
-    // Много прост превключвател на език
+    // Превключвател на език
     document.addEventListener('DOMContentLoaded', function(){
       var bgBtn = document.getElementById('bgBtn')
       var enBtn = document.getElementById('enBtn')
 
       function setLang(lang){
-        // Ако е EN - добавяме клас en към body, ако е BG - махаме го
         if(lang === 'EN'){
           document.body.classList.add('en')
           enBtn.classList.add('active')
